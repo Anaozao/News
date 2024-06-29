@@ -2,7 +2,10 @@ import { AnyAction } from "redux";
 import { ThunkDispatch } from "redux-thunk";
 
 export type ReduxState = {
-  news: NewsType[]
+  newsReducer: {
+    news: NewsType[];
+    favorites: NewsType[]
+  }
 }
 
 export type Dispatch = ThunkDispatch<ReduxState, null, AnyAction>;

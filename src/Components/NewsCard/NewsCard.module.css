@@ -1,18 +1,24 @@
 .newsCard {
-  border: 1px solid black;
-  border-radius: 15px;
-  display: flex;
-  flex-direction: column;
+  background-color: rgb(243, 242, 242);
+  border: 1px solid rgba(0, 0, 0, 0.281);
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px black;
+  display: grid;
+  grid-template-rows: 70% 15% 15%;
   justify-content: center;
-  gap: 20px;
-  height: 350px;
+  height: 380px;
   padding: 10px;
   width: 90%;
+
+  &:hover {
+    background-color: rgb(255, 255, 255);
+  }
 }
 
 .infoDiv {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 10px;
 }
 
@@ -30,10 +36,10 @@
   box-shadow: 1px 1px 5px rgb(0, 0, 0);
   color: white;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 90%;
   font-weight: 700;
   height: 30px;
-  width: 200px;
+  width: 50%;
   
   &:hover {
     background-color: rgb(0, 141, 0);
@@ -45,8 +51,14 @@
   text-decoration: none;
 }
 
+.BtnDiv {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .favBtn {
-  background-color: white;
+  background: none;
   border: none;
   width: 30px;
   height: 30px;

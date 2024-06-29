@@ -2,6 +2,7 @@ import { fetchNews } from "../../Utils/API"
 import { Dispatch, NewsType } from "../../types"
 
 export const SET_NEWS = 'SET_NEWS'
+export const SET_FAVORITES = 'SET_FAVORITES'
 
 const setNews = (payload: NewsType) => {
   return {
@@ -17,3 +18,10 @@ export const getNews = (page: number, qtd: number, search: string, tipo: string)
     dispatch(setNews(data))
   }
 }
+
+export const setFavorites = (payload: NewsType[]) => {
+  return {
+    type: SET_FAVORITES,
+    payload,
+  }
+} 

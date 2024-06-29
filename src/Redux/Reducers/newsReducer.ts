@@ -1,8 +1,9 @@
 import { AnyAction } from "redux"
-import { SET_NEWS } from "../Actions/actions"
+import { SET_FAVORITES, SET_NEWS } from "../Actions/actions"
 
 const INITIAL_STATE = {
-  news: []
+  news: [],
+  favorites: []
 }
 
 const newsReducer = (state = INITIAL_STATE, action: AnyAction) => {
@@ -12,6 +13,11 @@ const newsReducer = (state = INITIAL_STATE, action: AnyAction) => {
         ...state,
         news: action.payload
       }
+    case SET_FAVORITES:
+      return {
+        ...state,
+        favorites: action.payload
+      }  
     default:
       return state  
   }
