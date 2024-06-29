@@ -6,9 +6,10 @@
   display: grid;
   grid-template-rows: 70% 15% 15%;
   justify-content: center;
-  height: 380px;
+  height: 300px;
   padding: 10px;
-  width: 90%;
+  width: 350px;
+  max-width: 90%;
 
   &:hover {
     background-color: rgb(255, 255, 255);
@@ -20,6 +21,15 @@
   flex-direction: column;
   justify-content: center;
   gap: 10px;
+}
+
+.intro {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  line-height: 1.2em;
+  height: 3.6em; 
 }
 
 .timeAndBtn {
@@ -60,6 +70,7 @@
 .favBtn {
   background: none;
   border: none;
+  cursor: pointer;
   width: 30px;
   height: 30px;
 }
@@ -71,4 +82,31 @@
 
 .emptyHeart {
   font-size: 30px;
+}
+
+@media ( max-width : 800px ) {
+  .newsCard {
+    height: 300px;
+    max-width: 350px;
+    width: 100%;
+  }
+
+  .infoDiv {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .title {
+    font-size: 20px;
+    
+  }
+
+  .intro {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    line-height: 1.2em;
+    height: 3.6em; 
+  }
 }

@@ -1,3 +1,10 @@
+.main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  
+}
+
 .mainHeader {
   display: flex;
   justify-content: center;
@@ -19,9 +26,13 @@
 
 .mainNews {
   display: grid;
-  justify-items: center;
   grid-template-columns: 33.33% 33.33% 33.33%;
-  row-gap: 10px;
+  justify-items: center;
+  justify-content: center;
+  overflow: auto;
+  height: 100%;
+  width: 80%;
+  row-gap: 20px;
 }
 
 .noFavMsg {
@@ -45,4 +56,19 @@
   cursor: pointer;
   height: 30px;
   width: 200px;
+}
+
+@media ( max-width : 800px ) {
+  
+  .mainHeader {
+    gap: 8px;
+  }
+
+  .headerBtns {
+    font-size: 15px;
+  }
+
+  .mainNews {
+    grid-template-columns: 100%;
+  }
 }

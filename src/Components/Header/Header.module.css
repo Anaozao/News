@@ -19,3 +19,13 @@
   font-size: 50px;
   text-align: center;
 }
+
+@media ( max-width : 800px ) {
+  .logoImg {
+    width: 50px;
+  }
+  
+  .title {
+    font-size: 100%;
+  }
+}

@@ -5,24 +5,26 @@ import { MdFavorite, MdFavoriteBorder } from 'react-icons/md';
 import { NewsType, ReduxState } from '../../types';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFavorites } from '../../Redux/Actions/actions';
+import { timeAgoCard } from '../../Utils/Functions';
 
 type NewsCardProps = {
   title: string;
   intro: string;
-  time: string;
   link: string;
   id: number;
   item: NewsType
 }
 
-function NewsCard({title, intro, time, link, id, item}: NewsCardProps) {
+function NewsCard({title, intro, link, id, item}: NewsCardProps) {
   const [isFav, setIsFav] = useState(false)
   const { favorites } = useSelector((state: ReduxState) => state.newsReducer)
+  const [time, setTime] = useState('')
   const storage = useLoacalStorage()
   const [fav, setFav] = useState(false)
   const dispatch = useDispatch()
 
   useEffect(() => {
+    timeAgoCard(item, setTime)
     const is = storage.getItem('favorites').find((fav: NewsType) => fav.id === id)
     setFav(is);
   }, [isFav, favorites])
@@ -49,8 +51,8 @@ function NewsCard({title, intro, time, link, id, item}: NewsCardProps) {
   return (
     <article className={styles.newsCard}>
       <div className={styles.infoDiv}>
-        <h3>{title}</h3>
-        <p>{intro}</p>
+        <h3 className={styles.title}>{title}</h3>
+        <p className={styles.intro}>{intro}</p>
       </div>
       <div className={styles.timeAndBtn}>
         <p>{time} dias atrás</p>

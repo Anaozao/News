@@ -2,6 +2,13 @@
   background-color: white;
   box-shadow: 1px 1px 5px black;
   min-height: 100vh;
-  margin: 0 15%;
+  margin: 0 10%;
   padding: 20px 20px;
+}
+
+@media ( max-width : 800px ) {
+  
+  .appContainer {
+    margin: 0 0;
+  }
 }

@@ -99,7 +99,6 @@ function Home() {
               key={item.id}
               intro={item.introducao}
               id={item.id}
-              time={'x'}
               link={item.link}
               title={item.titulo}
               item={item}
@@ -113,7 +112,6 @@ function Home() {
                 key={item.id}
                 intro={item.introducao}
                 id={item.id}
-                time={'x'}
                 link={item.link}
                 title={item.titulo}
                 item={item}
@@ -127,26 +125,28 @@ function Home() {
             </>
           )
         )}
-      </section>
-      {!renderFavs && (
-        <div className={styles.showMoreBtnDiv}>
-        {newsCount <= 30 ? (
-          <button
-            className={styles.showMore}
-            onClick={showMore}
+        <div></div>
+        {!renderFavs && (
+          <div className={styles.showMoreBtnDiv}
           >
-            Mostrar mais
-          </button>
-        ) : (
-          <button
-            className={styles.showMore}
-            onClick={nextPage}
-          >
-            Pŕoxima página
-          </button>
+            {newsCount <= 30 ? (
+              <button
+                className={styles.showMore}
+                onClick={showMore}
+              >
+                Mostrar mais
+              </button>
+            ) : (
+              <button
+                className={styles.showMore}
+                onClick={nextPage}
+              >
+                Pŕoxima página
+              </button>
+            )}
+          </div>
         )}
-      </div>
-      )}
+      </section>
     </main>
   )
 }
