@@ -1,4 +1,27 @@
 .mainHeader {
   display: flex;
   gap: 5px;
+  margin: 20px 0;
+}
+
+.mainNews {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 33.33% 33.33% 33.33%;
+  row-gap: 10px;
+}
+
+.showMoreBtnDiv {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.showMore {
+  background-color: rgb(255, 217, 0);
+  border: 1px solid orangered;
+  border-radius: 5px;
+  height: 30px;
+  width: 200px;
 }

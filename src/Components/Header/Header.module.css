@@ -1,3 +1,21 @@
 .header {
-  display: flex;
+  align-items: center;
+  background-color: rgb(46, 44, 44);
+  display: grid;
+  grid-template-columns: 33.33% 33.33% 33.33%;
+  margin-bottom: 15px;
+}
+
+.logoImg {
+  width: 100px;
+}
+
+.titleContainer {
+  width: 100%;
+}
+
+.title {
+  color: white;
+  font-size: 50px;
+  text-align: center;
 }

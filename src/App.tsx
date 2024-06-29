@@ -1,15 +1,16 @@
 import Header from "./Components/Header/Header"
-import LatestNews from "./Components/LatestNews/LatestNews"
+import Featured from "./Components/Featured/Featured"
 import Home from "./Pages/Home"
+import styles from './App.module.css'
 
 function App() {
 
   return (
-    <>
+    <div className={styles.appContainer}>
       <Header/>
-      <LatestNews />
+      <Featured />
       <Home/>
-    </>
+    </div>
   )
 }
 

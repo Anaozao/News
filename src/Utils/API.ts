@@ -1,6 +1,12 @@
-export const fetchNews = async (page = 1, qtd = 30, search = '') => {
+export const fetchNews = async (page: number, qtd: number, search: string, tipo: string) => {
+  let url = `https://servicodados.ibge.gov.br/api/v3/noticias/?qtd=${qtd}&page=${page}&busca=${encodeURIComponent(search)}`
+
+  if (tipo) {
+    url += `&tipo=${encodeURIComponent(tipo)}`
+  }
+
   try {
-    const response = await fetch(`https://servicodados.ibge.gov.br/api/v3/noticias/?qtd=${qtd}&page=${page}&busca=${encodeURIComponent(search)}`)
+    const response = await fetch(url)
     if (!response.ok) {
       throw new Error(`Erro na requisição ${response.status}`)
     }

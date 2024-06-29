@@ -10,9 +10,9 @@ const setNews = (payload: NewsType) => {
   }
 }
 
-export const getNews = (page = 1, qtd = 30, search = '') => {
+export const getNews = (page: number, qtd: number, search: string, tipo: string) => {
   return async (dispatch: Dispatch) => {
-    const response = await fetchNews(page, qtd, search);
+    const response = await fetchNews(page, qtd, search, tipo);
     const data = response.items
     dispatch(setNews(data))
   }
