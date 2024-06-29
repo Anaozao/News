@@ -1,3 +1,5 @@
+import { NewsType } from "../types"
+
 export const fetchNews = async (page: number, qtd: number, search: string, tipo: string) => {
   let url = `https://servicodados.ibge.gov.br/api/v3/noticias/?qtd=${qtd}&page=${page}&busca=${encodeURIComponent(search)}`
 
@@ -17,3 +19,4 @@ export const fetchNews = async (page: number, qtd: number, search: string, tipo:
     console.error(`Erro: ${error}`)
   }
 }
+

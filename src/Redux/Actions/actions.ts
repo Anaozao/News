@@ -24,4 +24,4 @@ export const setFavorites = (payload: NewsType[]) => {
     type: SET_FAVORITES,
     payload,
   }
-} 
+}

@@ -1,6 +1,8 @@
 .latestSection {
   display: flex;
+  box-shadow: 0 0 5px black;
   gap: 5%;
+  padding: 20px 10px;
   margin: 100px 0;
 }
 
