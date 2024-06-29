@@ -1,7 +1,15 @@
+import Header from "./Components/Header/Header"
+import LatestNews from "./Components/LatestNews/LatestNews"
+import Home from "./Pages/Home"
+
 function App() {
 
   return (
-    <h1>Teste</h1>
+    <>
+      <Header/>
+      <LatestNews />
+      <Home/>
+    </>
   )
 }
 
