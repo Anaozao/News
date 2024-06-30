@@ -33,8 +33,11 @@ function Featured() {
       {news.length > 0 && (
         <>
           <img
+            data-testid='featured-image'
             className={styles.featuredImg}
-            src={image} alt="" />
+            src={image}
+            alt=""
+            />
           <div className={styles.infodiv}>
             <p className={styles.latest}>Em destaque</p>
             <h2>{news[0].titulo}</h2>
