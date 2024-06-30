@@ -6,6 +6,9 @@ export type ReduxState = {
     news: NewsType[];
     favorites: NewsType[]
   }
+  loadingReducer: {
+    loading: boolean,
+  }
 }
 
 export type Dispatch = ThunkDispatch<ReduxState, null, AnyAction>;

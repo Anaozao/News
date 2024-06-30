@@ -17,16 +17,31 @@ function Home() {
   const [category, setCategory] = useState('latest')
   const [favs, setFavs] = useState<NewsType[]>([])
   const [search, setSearch] = useState('')
-  const [isSearch, setIsSearch] = useState(false)
+  const [isSearch, setIsSearch] = useState(0)
 
   useEffect(() => {
-    setFavs(storage.getItem('favorites'))
-    if (isSearch) {
+    if (isSearch > 0) {
       dispatch(getNews(page, 30, search, ''))
       return;
     }
     dispatch(getNews(page, 30, '', category))
-  }, [page, renderFavs, favorites, isSearch])
+  }, [page, isSearch])
+
+  useEffect(() => {
+    setFavs(storage.getItem('favorites'))
+  }, [renderFavs, favorites])
+
+  useEffect(() => {
+    setPage(1)
+    setNewsCount(9)
+  }, [isSearch])
+
+  const backToStart = () => {
+    setSearch('')
+    dispatch(getNews(1, 30, '', ''))
+    setPage(1)
+    setNewsCount(9)
+  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
@@ -39,7 +54,7 @@ function Home() {
   const nextPage = () => {
     setNewsCount(9)
     setPage(page + 1)
-    window.scrollTo(0, 0);
+    window.scrollTo(0, window.innerHeight / 2);
   }
 
   const handleCategory = (section: string) => {
@@ -47,29 +62,28 @@ function Home() {
     switch (section) {
       case 'latest':
         setRenderFavs(false)
-        if(category !== "") {
-          setPage(1)
-        }
+        setPage(1)
+        setIsSearch(0)
         setCategory('latest')
-        dispatch(getNews(page, 30, '', ''))
+        dispatch(getNews(1, 30, '', ''))
       break
       case 'Releases':
         setRenderFavs(false)
-        if(category !== "Release") {
-          setPage(1)
-        }
+        setPage(1)
+        setIsSearch(0)
         setCategory('Release')
-        dispatch(getNews(page, 30, '', 'Release'))
+        dispatch(getNews(1, 30, '', 'Release'))
       break
       case 'Notícias':
         setRenderFavs(false)
-        if(category !== "Noticia") {
-          setPage(1)
-        }
+        setPage(1)
+        setIsSearch(0)
         setCategory('Noticia')
-        dispatch(getNews(page, 30, '', 'Noticia'))
+        dispatch(getNews(1, 30, '', 'Noticia'))
       break
       default:
+        setPage(1)
+        setIsSearch(0)
         setCategory('favorites')
         setRenderFavs(true)
     }
@@ -77,10 +91,11 @@ function Home() {
 
   const handleSearch = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setIsSearch(true)
-    dispatch(getNews(page, 30, search, ''))
-  }
-
+    setPage(1)
+    setRenderFavs(false)
+    setCategory('latest')
+    setIsSearch(isSearch + 1)
+  } 
   return (
     <main className={styles.main}>
       <header className={styles.mainHeader}>
@@ -128,22 +143,10 @@ function Home() {
           </button>
         </form>
       </header>
-      <section className={styles.mainNews}>
-        {(!renderFavs && news.length > 0) && (
-          news.map((item, index) => (index < newsCount) && (
-            <NewsCard 
-              key={item.id}
-              intro={item.introducao}
-              id={item.id}
-              link={item.link}
-              title={item.titulo}
-              item={item}
-            />
-          ))
-        )}
-        {renderFavs && (
-          favs.length > 0 ? (
-            favs.map((item) => 
+      {news.length > 0 ? (
+        <section className={styles.mainNews}>
+          {(!renderFavs && news.length > 0) && (
+            news.map((item, index) => (index < newsCount && index > 0) && (
               <NewsCard 
                 key={item.id}
                 intro={item.introducao}
@@ -152,37 +155,61 @@ function Home() {
                 title={item.titulo}
                 item={item}
               />
-            )
-          ) : (
-            <>
-              <p></p>
-              <h1 className={styles.noFavMsg}>Nenhuma notícia favoritada!</h1>
-              <p></p>
-            </>
-          )
-        )}
-        <div></div>
-        {!renderFavs && (
-          <div className={styles.showMoreBtnDiv}
-          >
-            {newsCount <= 30 ? (
-              <button
-                className={styles.showMore}
-                onClick={showMore}
-              >
-                Mostrar mais
-              </button>
+            ))
+          )}
+          {renderFavs && (
+            favs.length > 0 ? (
+              favs.map((item) => 
+                <NewsCard 
+                  key={item.id}
+                  intro={item.introducao}
+                  id={item.id}
+                  link={item.link}
+                  title={item.titulo}
+                  item={item}
+                />
+              )
             ) : (
-              <button
-                className={styles.showMore}
-                onClick={nextPage}
-              >
-                Pŕoxima página
-              </button>
-            )}
-          </div>
-        )}
-      </section>
+              <>
+                <p></p>
+                <h1 className={styles.noFavMsg}>Nenhuma notícia favoritada!</h1>
+                <p></p>
+              </>
+            )
+          )}
+          <div></div>
+          {!renderFavs && (
+            <div className={styles.showMoreBtnDiv}
+            >
+              {newsCount <= 30 ? (
+                <button
+                  className={styles.showMore}
+                  onClick={showMore}
+                >
+                  Mostrar mais
+                </button>
+              ) : (
+                <button
+                  className={styles.showMore}
+                  onClick={nextPage}
+                >
+                  Pŕoxima página
+                </button>
+              )}
+            </div>
+          )}
+        </section>
+      ) : (
+        <div className={styles.emptyNews}>
+          <h1>Sem mais notícias</h1>
+          <button
+            className={styles.showMore}
+            onClick={backToStart}
+          >
+            Voltar ao início
+          </button>
+        </div>
+      )}
     </main>
   )
 }

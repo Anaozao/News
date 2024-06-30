@@ -10,10 +10,14 @@ export const timeAgo = (news: NewsType[], setTime: React.Dispatch<React.SetState
 
     const difference = today.getTime() - newsDate.getTime()
     const daysDifference = Math.floor(difference / (1000 * 3600 * 24))
+    const hoursDifference = Math.floor((difference % (1000 * 3600 * 24)) / (1000 * 3600))
 
     let timeString = ""
     if (daysDifference > 0) {
       timeString += `${daysDifference} dia(s) `
+    }
+    if (hoursDifference > 0) {
+      timeString += `${hoursDifference} hora(s) `
     }
     setTime(timeString)
   }
@@ -29,10 +33,14 @@ export const timeAgoCard = (news: NewsType, setTime: React.Dispatch<React.SetSta
 
     const difference = today.getTime() - newsDate.getTime()
     const daysDifference = Math.floor(difference / (1000 * 3600 * 24))
+    const hoursDifference = Math.floor((difference % (1000 * 3600 * 24)) / (1000 * 3600))
 
     let timeString = ""
     if (daysDifference > 0) {
       timeString += `${daysDifference} dia(s) `
+    }
+    if (hoursDifference > 0) {
+      timeString += `${hoursDifference} hora(s) `
     }
     setTime(timeString)
   }

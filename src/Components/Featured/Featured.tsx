@@ -19,6 +19,7 @@ function Featured() {
     }
     getLatest()
   }, [])
+
   useEffect(() => {
     timeAgo(news, setTime)
     if (news.length > 0) {
@@ -35,11 +36,11 @@ function Featured() {
             className={styles.featuredImg}
             src={image} alt="" />
           <div className={styles.infodiv}>
-            <p className={styles.latest}>Notícia mais recente</p>
+            <p className={styles.latest}>Em destaque</p>
             <h2>{news[0].titulo}</h2>
             <p>{news[0].introducao}</p>
             <div className={styles.timeAndBtn}>
-              <p>{time}</p>
+              <p>{`${time} dia(s) atrás`}</p>
               <button
                 className={styles.Btn}
               >

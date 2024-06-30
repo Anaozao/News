@@ -86,6 +86,13 @@
   width: 200px;
 }
 
+.emptyNews {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 @media ( max-width : 800px ) {
   
   .mainHeader {
