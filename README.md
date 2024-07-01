@@ -1,4 +1,4 @@
-Este projeto use da API do IBGE (url base: https://servicodados.ibge.gov.br/api/v3/noticias/?qtd=100)
+Este projeto utiliza da API do IBGE (url base: https://servicodados.ibge.gov.br/api/v3/noticias/?qtd=100)
 para fazer a renderização de notícias.
 
 Nele você consgue filtrar por notícias mais recentes, atualizações, notícias novas, favoritar e pesquisar por títilo.
