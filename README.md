@@ -11,3 +11,6 @@ Para utilizar o projeto na sua máquina:
 1 - clone o repositório;
 2 - dentro do repositório use o comando npm install;
 3 - dentro do repositório use o comando npm run dev;
+
+Para conferir o projeto sem precisar instalar na máquina: 
+https://news-ibxi-mm4m0rluo-tulio-paris-projects.vercel.app/

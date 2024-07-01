@@ -43,7 +43,7 @@ function Featured() {
             <h2>{news[0].titulo}</h2>
             <p>{news[0].introducao}</p>
             <div className={styles.timeAndBtn}>
-              <p>{`${time} dia(s) atrás`}</p>
+              <p>{`${time} atrás`}</p>
               <button
                 data-testid='featured-link-btn'
                 className={styles.Btn}

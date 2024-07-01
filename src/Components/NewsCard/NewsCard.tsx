@@ -58,7 +58,7 @@ function NewsCard({title, intro, link, id, item, testId}: NewsCardProps) {
         <p className={styles.intro}>{intro}</p>
       </div>
       <div className={styles.timeAndBtn}>
-        <p>{time} dias atrás</p>
+        <p>{time} atrás</p>
         <button
               data-testid = 'card-button'
               className={styles.readFullBtn}
