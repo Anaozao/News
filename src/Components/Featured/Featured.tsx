@@ -45,6 +45,7 @@ function Featured() {
             <div className={styles.timeAndBtn}>
               <p>{`${time} dia(s) atrás`}</p>
               <button
+                data-testid='featured-link-btn'
                 className={styles.Btn}
               >
                 <a

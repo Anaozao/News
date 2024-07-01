@@ -13,9 +13,10 @@ type NewsCardProps = {
   link: string;
   id: number;
   item: NewsType
+  testId: string
 }
 
-function NewsCard({title, intro, link, id, item}: NewsCardProps) {
+function NewsCard({title, intro, link, id, item, testId}: NewsCardProps) {
   const [isFav, setIsFav] = useState(false)
   const { favorites } = useSelector((state: ReduxState) => state.newsReducer)
   const [time, setTime] = useState('')
@@ -49,7 +50,9 @@ function NewsCard({title, intro, link, id, item}: NewsCardProps) {
   }
 
   return (
-    <article className={styles.newsCard}>
+    <article
+      data-testid={testId}
+      className={styles.newsCard}>
       <div className={styles.infoDiv}>
         <h3 className={styles.title}>{title}</h3>
         <p className={styles.intro}>{intro}</p>
@@ -57,9 +60,11 @@ function NewsCard({title, intro, link, id, item}: NewsCardProps) {
       <div className={styles.timeAndBtn}>
         <p>{time} dias atrás</p>
         <button
+              data-testid = 'card-button'
               className={styles.readFullBtn}
             >
               <a
+                data-testid = 'card-link'
                 className={styles.link}
                 href={ link }
                 target="_blank"rel="noopener noreferrer"
@@ -70,6 +75,7 @@ function NewsCard({title, intro, link, id, item}: NewsCardProps) {
       </div>
       <div className={styles.BtnDiv}>
         <button
+          data-testid='fav-btn'
           className={styles.favBtn}
           onClick={handleFavorite}
         >

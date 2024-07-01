@@ -11,7 +11,7 @@ function Home() {
   const dispatch: Dispatch = useDispatch()
   const storage = useLocalStorage()
   const { news, favorites} = useSelector((state: ReduxState) => state.newsReducer)
-  const [newsCount, setNewsCount] = useState(9)
+  const [newsCount, setNewsCount] = useState(10)
   const [page, setPage] = useState(1)
   const [renderFavs, setRenderFavs] = useState(false)
   const [category, setCategory] = useState('latest')
@@ -33,7 +33,7 @@ function Home() {
 
   useEffect(() => {
     setPage(1)
-    setNewsCount(9)
+    setNewsCount(10)
   }, [isSearch])
 
   const backToStart = () => {
@@ -52,13 +52,13 @@ function Home() {
   }
 
   const nextPage = () => {
-    setNewsCount(9)
+    setNewsCount(10)
     setPage(page + 1)
     window.scrollTo(0, window.innerHeight / 2);
   }
 
   const handleCategory = (section: string) => {
-    setNewsCount(9)
+    setNewsCount(10)
     switch (section) {
       case 'latest':
         setRenderFavs(false)
@@ -98,27 +98,33 @@ function Home() {
   } 
   return (
     <main className={styles.main}>
-      <header className={styles.mainHeader}>
+      <header
+        data-testid='filters-header'
+        className={styles.mainHeader}>
         <div className={styles.headerBtnsDiv}>
           <button
+            data-testid='latest-btn'
             className={`${styles.headerBtns} ${category === 'latest' && styles.selected}`}
             onClick={() => handleCategory('latest')}
           >
             Mais recentes
           </button>
           <button
+            data-testid='release-btn'
             className={`${styles.headerBtns} ${category === 'Release' && styles.selected}`}
             onClick={() => handleCategory('Releases')}
           >
             Atualizações
           </button>
           <button
+            data-testid='news-btn'
             className={`${styles.headerBtns} ${category === 'Noticia' && styles.selected}`}
             onClick={() => handleCategory('Notícias')}
           >
             Notícias
           </button>
           <button
+            data-testid='favorites-btn'
             className={`${styles.headerBtns} ${category === 'favorites' && styles.selected}`}
             onClick={() => handleCategory('favorites')}
           >
@@ -128,6 +134,7 @@ function Home() {
         <form className={styles.form}>
           <label>
             <input
+              data-testid='search-input'
               className={styles.searchInput}
               type="text"
               name='search'
@@ -136,6 +143,7 @@ function Home() {
             />
           </label>
           <button
+            data-testid='search-btn'
             className={styles.searchBtn}
             onClick={handleSearch}
           >
@@ -147,7 +155,8 @@ function Home() {
         <section className={styles.mainNews}>
           {(!renderFavs && news.length > 0) && (
             news.map((item, index) => (index < newsCount && index > 0) && (
-              <NewsCard 
+              <NewsCard
+                testId={'news-card'}
                 key={item.id}
                 intro={item.introducao}
                 id={item.id}
@@ -160,7 +169,8 @@ function Home() {
           {renderFavs && (
             favs.length > 0 ? (
               favs.map((item) => 
-                <NewsCard 
+                <NewsCard
+                  testId={'fav-news-card'}
                   key={item.id}
                   intro={item.introducao}
                   id={item.id}
@@ -193,7 +203,7 @@ function Home() {
                   className={styles.showMore}
                   onClick={nextPage}
                 >
-                  Pŕoxima página
+                  Próxima página
                 </button>
               )}
             </div>
