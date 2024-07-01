@@ -19,6 +19,9 @@ export const timeAgo = (news: NewsType[], setTime: React.Dispatch<React.SetState
     if (hoursDifference > 0) {
       timeString += `${hoursDifference} hora(s) `
     }
+    if (daysDifference < 1 && hoursDifference < 1) {
+      timeString = 'Menos de 1 hora'
+    }
     setTime(timeString)
   }
 }
