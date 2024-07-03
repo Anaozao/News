@@ -6,7 +6,6 @@ import { Dispatch, NewsType, ReduxState } from '../types';
 import NewsCard from '../Components/NewsCard/NewsCard';
 import useLocalStorage from '../Hooks/useLocalStorage';
 import { IoSearch } from 'react-icons/io5';
-import ReactLoading from 'react-loading';
 
 function Home() {
   const dispatch: Dispatch = useDispatch()
