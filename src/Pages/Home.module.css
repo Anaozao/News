@@ -2,7 +2,6 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  
 }
 
 .mainHeader {
@@ -58,8 +57,9 @@
   justify-items: center;
   justify-content: center;
   overflow: auto;
-  height: 100%;
-  width: 80%;
+  /* height: 100%; */
+  padding: 10px 0;
+  width: 100%;
   row-gap: 20px;
 }
 
