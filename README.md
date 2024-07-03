@@ -13,4 +13,4 @@ Para utilizar o projeto na sua máquina:
 3 - dentro do repositório use o comando npm run dev;
 
 Para conferir o projeto sem precisar instalar na máquina: 
-https://news-seven-ochre.vercel.app/
+https://tulioparisnews.vercel.app/
