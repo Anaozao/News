@@ -12,7 +12,7 @@ export const setLoading = (payload: boolean) => {
   }
 }
 
-const setNews = (payload: NewsType | []) => {
+export const setNews = (payload: NewsType | []) => {
   return {
     type: SET_NEWS,
     payload,
